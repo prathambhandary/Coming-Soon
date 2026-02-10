@@ -1,95 +1,267 @@
-<!DOCTYPE html>
+```
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Firewave — Coming Soon</title>
-
-  <!-- SEO -->
-  <meta name="description" content="Firewave is launching soon. Freelance tech and digital solutions." />
-
-  <style>
-    :root {
-      --bg: #0b0f14;
-      --accent: #38bdf8;
-      --text: #e5e7eb;
-      --muted: #9ca3af;
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-    }
-
-    body {
-      min-height: 100vh;
-      background: radial-gradient(circle at top, #0f172a, #020617);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--text);
-      text-align: center;
-    }
-
-    .container {
-      max-width: 600px;
-      padding: 40px 20px;
-    }
-
-    h1 {
-      font-size: 3rem;
-      letter-spacing: 2px;
-      margin-bottom: 15px;
-    }
-
-    h1 span {
-      color: var(--accent);
-    }
-
-    p {
-      color: var(--muted);
-      font-size: 1.05rem;
-      margin-bottom: 25px;
-    }
-
-    .badge {
-      display: inline-block;
-      padding: 8px 16px;
-      border: 1px solid var(--accent);
-      border-radius: 999px;
-      color: var(--accent);
-      font-size: 0.85rem;
-      letter-spacing: 1px;
-      margin-bottom: 25px;
-    }
-
-    footer {
-      margin-top: 40px;
-      font-size: 0.85rem;
-      color: var(--muted);
-    }
-
-    a {
-      color: var(--accent);
-      text-decoration: none;
-    }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>firewave.in</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&display=swap');
+:root {
+--blue: #2563eb;
+--bg: #ffffff;
+--text: #000000;
+}
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+html, body {
+height: 100%;
+}
+body {
+font-family: 'Instrument Sans', sans-serif;
+background: var(--bg);
+overflow: hidden;
+}
+.circle-wrapper {
+position: fixed;
+inset: 0;
+display: grid;
+place-items: center;
+z-index: 0;
+}
+.breathing-circle {
+width: 140px;
+height: 140px;
+border-radius: 50%;
+background: var(--blue);
+animation: breathe 4s ease-in-out infinite;
+}
+@keyframes breathe {
+0%, 100% {
+transform: scale(1);
+border: 20px solid #5581e0;
+}
+50% {
+transform: scale(1.6);
+border: 5px solid #5c8bf1;
+}
+}
+.coming {
+position: relative;
+z-index: 1;
+height: 100vh;
+display: grid;
+place-items: center;
+text-align: center;
+color: black;
+mix-blend-mode: multiply;
+}
+.coming h1 {
+font-size: 5rem;
+font-weight: 700;
+margin-bottom: 0.5rem;
+font-family: "Newsreader", serif !important;
+font-style: italic;
+display: inline-block;
+white-space: nowrap;
+overflow: hidden;
+}
+@keyframes typewriter {
+from {
+width: 0;
+}
+to {
+width: 100%;
+}
+}
+@media (max-width: 600px) {
+.coming h1 {
+font-size: 3rem;
+}
+}
+@media (max-width: 400px) {
+.coming h1 {
+font-size: 2rem;
+}
+}
+.coming a {
+color: inherit;
+text-decoration: none;
+font-size: 1rem;
+opacity: 0.8;
+position: absolute;
+bottom: 20px;
+}
+@media (hover: hover) and (pointer: fine) {
+body {
+cursor: none;
+}
+.cursor {
+position: fixed;
+width: 10px;
+height: 10px;
+border-radius: 50%;
+border: 2px solid white;
+pointer-events: none;
+background: white;
+transform: translate(-50%, -50%);
+mix-blend-mode: difference;
+z-index: 9999;
+}
+}
+.nav-wrapper {
+position: fixed;
+top: 0;
+left: 0;
+right: 0;
+z-index: 100;
+padding: 1.5rem 2rem;
+transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.nav-wrapper.scrolled {
+background: rgba(255, 255, 255, 0.9);
+backdrop-filter: blur(20px);
+padding: 1rem 2rem;
+box-shadow: 0 1px 0 rgba(0,0,0,0.05);
+}
+.nav-inner {
+max-width: 1400px;
+margin: 0 auto;
+display: flex;
+justify-content: space-between;
+align-items: center;
+}
+.nav-links {
+display: flex;
+gap: 3rem;
+}
+.nav-link {
+font-size: 0.875rem;
+font-weight: 500;
+color: var(--text-secondary);
+text-decoration: none;
+position: relative;
+letter-spacing: 0.02em;
+transition: color 0.3s ease;
+}
+.nav-link:hover {
+color: var(--text-primary);
+}
+.nav-link::after {
+content: '';
+position: absolute;
+bottom: -4px;
+left: 0;
+width: 0;
+height: 1px;
+background: var(--blue-primary);
+transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.nav-link:hover::after {
+width: 100%;
+}
+.logo {
+display: flex;
+align-items: center;
+text-decoration: none;
+}
+.logo-icon {
+width: 32px;
+height: 32px;
+}
+.logo-text {
+font-size: 1.125rem;
+font-weight: 600;
+color: black;
+letter-spacing: -0.02em;
+}
+@media (hover: hover) and (pointer: fine) {
+body {
+cursor: none;
+}
+.cursor {
+position: fixed;
+width: 12px;
+height: 12px;
+border-radius: 50%;
+background: white;
+pointer-events: none;
+z-index: 9999;
+mix-blend-mode: difference;
+transform: translate(-50%, -50%) scale(1);
+transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.cursor.hover {
+transform: translate(-50%, -50%) scale(4);
+}
+}
+</style>
 </head>
-
 <body>
-  <div class="container">
-    <div class="badge">COMING SOON</div>
-    <h1><span>Firewave</span></h1>
-    <p>
-      Building modern, secure, and impactful digital solutions.<br />
-      Launching soon.
-    </p>
-
-    <footer>
-      Contact: <a href="mailto:pratham@firewave.in">pratham@firewave.in</a>
-    </footer>
-  </div>
+<nav class="nav-wrapper" id="nav">
+<div class="nav-inner"><a href="#" class="logo magnetic">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="40px" height="60px" viewBox="0 0 100 170" version="1.1">
+<g id="surface1">
+<path style=" stroke:none;fill-rule:nonzero;fill:rgb(0.392157%,30.19608%,96.078432%);fill-opacity:1;" d="M 60.5 29.25 C 60.449219 29.882812 60.324219 30.457031 60.148438 31.070312 C 59.035156 35.0625 58.941406 39.261719 59 43.375 C 59.003906 43.539062 59.003906 43.539062 59.003906 43.707031 C 59.097656 48.5625 59.925781 53.496094 61.375 58.125 C 61.40625 58.230469 61.441406 58.335938 61.472656 58.441406 C 61.652344 59.003906 61.839844 59.5625 62.035156 60.121094 C 62.09375 60.289062 62.152344 60.457031 62.210938 60.625 C 62.792969 62.347656 63.589844 64.003906 64.625 65.5 C 65.085938 65.316406 65.246094 65.105469 65.492188 64.679688 C 66.066406 63.738281 66.742188 62.878906 67.421875 62.011719 C 67.609375 61.769531 67.796875 61.527344 67.984375 61.285156 C 68.738281 60.308594 69.527344 59.367188 70.335938 58.4375 C 70.476562 58.277344 70.617188 58.113281 70.753906 57.949219 C 71.175781 57.449219 71.621094 57.019531 72.121094 56.597656 C 72.382812 56.367188 72.621094 56.125 72.859375 55.875 C 73.53125 55.195312 74.277344 54.511719 75.25 54.375 C 75.242188 54.445312 75.230469 54.515625 75.222656 54.585938 C 75.121094 55.335938 75.023438 56.082031 74.929688 56.828125 C 74.894531 57.101562 74.859375 57.375 74.824219 57.652344 C 74.273438 61.863281 74.023438 66.351562 75.125 70.5 C 75.148438 70.597656 75.175781 70.695312 75.199219 70.792969 C 76.136719 74.320312 77.6875 77.695312 79.195312 81.007812 C 82.246094 87.722656 84.128906 94.683594 81.5 101.875 C 79.4375 107.242188 75.601562 111.644531 71 115 C 70.878906 115.089844 70.753906 115.179688 70.628906 115.273438 C 64.824219 119.40625 57.753906 121.34375 50.679688 121.304688 C 50.53125 121.304688 50.382812 121.304688 50.230469 121.304688 C 47.988281 121.292969 45.820312 121.226562 43.625 120.75 C 43.546875 120.734375 43.46875 120.714844 43.386719 120.699219 C 37.152344 119.351562 31.492188 116.636719 26.625 112.5 C 26.519531 112.410156 26.414062 112.324219 26.308594 112.230469 C 24.660156 110.792969 23.0625 109.226562 21.773438 107.453125 C 21.625 107.25 21.472656 107.046875 21.316406 106.847656 C 19.082031 103.871094 17.492188 100.328125 16.5 96.75 C 16.460938 96.601562 16.417969 96.457031 16.375 96.304688 C 16.230469 95.75 16.113281 95.1875 16 94.625 C 15.976562 94.511719 15.953125 94.402344 15.929688 94.285156 C 15.050781 89.867188 15.09375 84.785156 16 80.375 C 16.027344 80.230469 16.058594 80.085938 16.085938 79.9375 C 16.742188 76.769531 17.710938 73.542969 19.128906 70.628906 C 19.257812 70.359375 19.378906 70.085938 19.5 69.8125 C 20.460938 67.671875 21.667969 65.589844 23.125 63.75 C 23.214844 63.632812 23.304688 63.515625 23.398438 63.394531 C 23.949219 62.699219 24.519531 62.015625 25.25 61.5 C 25.332031 61.5 25.414062 61.5 25.5 61.5 C 25.5 61.640625 25.503906 61.78125 25.503906 61.925781 C 25.511719 65.742188 25.511719 65.742188 26.125 69.5 C 26.152344 69.609375 26.179688 69.71875 26.207031 69.828125 C 26.574219 71.25 27.066406 72.578125 27.75 73.875 C 27.816406 74 27.816406 74 27.878906 74.125 C 29.535156 77.265625 32.136719 80.398438 35.5 81.75 C 35.453125 81.609375 35.402344 81.472656 35.351562 81.328125 C 34.15625 77.84375 33.652344 74.402344 33.6875 70.71875 C 33.6875 70.570312 33.6875 70.421875 33.6875 70.269531 C 33.699219 67.933594 33.820312 65.671875 34.25 63.375 C 34.269531 63.261719 34.289062 63.148438 34.3125 63.03125 C 34.433594 62.347656 34.582031 61.675781 34.75 61 C 34.777344 60.894531 34.800781 60.789062 34.828125 60.683594 C 36.683594 53.355469 40.152344 46.164062 45.375 40.625 C 45.523438 40.457031 45.667969 40.285156 45.8125 40.117188 C 46.226562 39.640625 46.667969 39.203125 47.117188 38.761719 C 47.324219 38.550781 47.511719 38.339844 47.695312 38.109375 C 48.011719 37.734375 48.351562 37.429688 48.722656 37.113281 C 49.015625 36.863281 49.296875 36.605469 49.578125 36.34375 C 50.351562 35.644531 51.171875 35.007812 52 34.375 C 52.078125 34.316406 52.15625 34.253906 52.238281 34.191406 C 54.253906 32.640625 56.347656 31.273438 58.574219 30.042969 C 58.777344 29.929688 58.984375 29.8125 59.183594 29.691406 C 59.332031 29.605469 59.332031 29.605469 59.484375 29.519531 C 59.570312 29.46875 59.660156 29.414062 59.75 29.363281 C 60 29.25 60 29.25 60.5 29.25 Z M 60.5 29.25 "/>
+<path style=" stroke:none;fill-rule:nonzero;fill:rgb(13.333334%,67.058825%,99.607843%);fill-opacity:1;" d="M 54.5 57.25 C 54.640625 57.667969 54.609375 57.84375 54.53125 58.269531 C 54.511719 58.398438 54.488281 58.523438 54.464844 58.65625 C 54.429688 58.859375 54.429688 58.859375 54.390625 59.0625 C 53.050781 66.515625 54.304688 75.183594 58.632812 81.5 C 58.972656 81.957031 59.21875 82.269531 59.75 82.5 C 62.238281 80.5 63.429688 77.5 64.25 74.5 C 64.65625 74.84375 64.875 75.289062 65.117188 75.75 C 65.164062 75.839844 65.210938 75.929688 65.261719 76.023438 C 65.933594 77.324219 66.511719 78.664062 67.089844 80.003906 C 67.214844 80.296875 67.34375 80.585938 67.472656 80.875 C 70.074219 86.980469 70.773438 93.890625 68.75 100.25 C 68.722656 100.339844 68.695312 100.429688 68.664062 100.523438 C 67.914062 102.867188 66.640625 104.929688 65 106.75 C 64.910156 106.851562 64.910156 106.851562 64.816406 106.953125 C 63.242188 108.707031 61.246094 110 59.125 111 C 58.980469 111.070312 58.835938 111.136719 58.683594 111.210938 C 54.652344 112.964844 49.660156 113.269531 45.375 112.375 C 45.277344 112.355469 45.179688 112.335938 45.078125 112.3125 C 42.367188 111.734375 39.875 110.554688 37.6875 108.863281 C 37.464844 108.695312 37.234375 108.53125 37 108.375 C 37 108.292969 37 108.210938 37 108.125 C 36.929688 108.09375 36.859375 108.066406 36.785156 108.035156 C 34.242188 106.621094 32.679688 102.960938 31.75 100.375 C 31.695312 100.226562 31.644531 100.082031 31.589844 99.929688 C 31.066406 98.34375 30.816406 96.664062 30.75 95 C 30.742188 94.851562 30.738281 94.703125 30.730469 94.550781 C 30.65625 91.339844 31.445312 88.238281 32.875 85.375 C 32.957031 85.375 33.039062 85.375 33.125 85.375 C 33.183594 85.527344 33.242188 85.675781 33.304688 85.832031 C 34.070312 87.75 35.015625 89.308594 36.375 90.875 C 36.46875 90.984375 36.5625 91.09375 36.660156 91.207031 C 37.085938 91.734375 37.085938 91.734375 37.625 92.125 C 37.625 92.207031 37.625 92.289062 37.625 92.375 C 37.699219 92.410156 37.769531 92.441406 37.84375 92.476562 C 38.132812 92.628906 38.359375 92.804688 38.609375 93.015625 C 39.351562 93.605469 40.171875 94.046875 41 94.5 C 40.8125 93.832031 40.601562 93.191406 40.328125 92.554688 C 38.726562 88.449219 38.75 83.289062 39.5 79 C 39.519531 78.882812 39.539062 78.765625 39.5625 78.648438 C 40.25 74.820312 41.671875 71.15625 43.75 67.875 C 43.832031 67.746094 43.914062 67.613281 43.996094 67.480469 C 44.988281 65.957031 46.078125 64.515625 47.324219 63.195312 C 47.570312 62.933594 47.796875 62.671875 48.023438 62.398438 C 48.347656 62.015625 48.710938 61.691406 49.09375 61.367188 C 49.410156 61.09375 49.714844 60.808594 50.023438 60.523438 C 51.351562 59.316406 52.886719 58.058594 54.5 57.25 Z M 54.5 57.25 "/>
+</g>
+</svg>
+<span class="logo-text">firewave.in</span> </a>
+</div>
+</div>
+</nav>
+<div class="circle-wrapper">
+<div class="breathing-circle"></div>
+</div>
+<section class="coming">
+<div>
+<h1 id="typewriter" class="magnetic"></h1>
+</div>
+<a href="mailto:hello@firewave.in">hello@firewave.in</a>
+</section>
+<div class="cursor" id="cursor"></div>
+<script>
+const cursor = document.getElementById('cursor');
+if (cursor && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+let mouseX = window.innerWidth / 2;
+let mouseY = window.innerHeight / 2;
+let currentX = mouseX;
+let currentY = mouseY;
+const speed = 0.15;
+document.addEventListener('mousemove', (e) => {
+mouseX = e.clientX;
+mouseY = e.clientY;
+});
+function animate() {
+currentX += (mouseX - currentX) * speed;
+currentY += (mouseY - currentY) * speed;
+cursor.style.left = currentX + 'px';
+cursor.style.top = currentY + 'px';
+requestAnimationFrame(animate);
+}
+animate();
+document.querySelectorAll('a, button, .magnetic').forEach(el => {
+el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+});
+}
+</script>
+<script src="https://cdn.jsdelivr.net/npm/typed.js@2.1.0/dist/typed.umd.js"></script>
+<script>
+new Typed('#typewriter', {
+strings: ['Coming Soon…'],
+typeSpeed: 70,
+startDelay: 500,
+showCursor: true,
+cursorChar: '',
+loop: false
+});
+</script>
 </body>
 </html>
+
+```
