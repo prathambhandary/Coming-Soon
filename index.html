@@ -1,4 +1,4 @@
-
+]```
 <!doctype html>
 <html lang="en">
 <head>
@@ -40,6 +40,11 @@ border-radius: 50%;
 background: var(--blue);
 animation: breathe 4s ease-in-out infinite;
 }
+@media (max-width: 600px) {
+.breathing-circle {
+width: 100px;
+height: 100px;
+}}
 @keyframes breathe {
 0%, 100% {
 transform: scale(1);
@@ -87,7 +92,7 @@ font-size: 3rem;
 }
 @media (max-width: 400px) {
 .coming h1 {
-font-size: 2rem;
+font-size: 2.5rem;
 }
 }
 .coming a {
@@ -201,18 +206,28 @@ transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 transform: translate(-50%, -50%) scale(4);
 }
 }
-.footer-mail {
+.mail {
   position: fixed;
   bottom: 50px;
   left: 50%;
   transform: translateX(-50%);
-  font-size: 1rem;
+  font-size: 1.5rem;
   opacity: 0.8;
   text-decoration: none;
   color: black;
   z-index: 10;
 }
-
+.cont {
+    position: fixed;
+    bottom: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 2rem;
+    opacity: 0.8;
+    text-decoration: none;
+    color: black;
+    z-index: 10;
+}
 </style>
 </head>
 <body>
@@ -236,7 +251,8 @@ transform: translate(-50%, -50%) scale(4);
 <h1 id="typewriter" class="magnetic"></h1>
 </div>
 </section>
-<a class="footer-mail" href="mailto:hello@firewave.in">hello@firewave.in</a>
+<h2 class="cont">Contact Us:</h2>
+<a class="mail" href="mailto:hello@firewave.in">hello@firewave.in</a>
 
 <div class="cursor" id="cursor"></div>
 <script>
@@ -279,3 +295,5 @@ loop: false
 </body>
 </html>
 
+
+```
