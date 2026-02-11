@@ -13,6 +13,8 @@
 --blue: #2563eb;
 --bg: #ffffff;
 --text: #000000;
+--circlein: #22abfe;
+--circleout: #014df5;
 }
 * {
 margin: 0;
@@ -40,7 +42,7 @@ width: 80px;
 height: 80px;
 border-radius: 50%;
 /* background: var(--blue); */
-background-color: #5581e0;
+background-color: var(--circlein);
 animation: breathe 4s ease-in-out infinite;
 }
 @media (max-width: 600px) {
@@ -55,11 +57,11 @@ animation: breathe 4s ease-in-out infinite;
 @keyframes breathe {
 0%, 100% {
 transform: scale(1);
-border: 20px solid #5581e0;
+border: 20px solid var(--circleout);
 }
 50% {
 transform: scale(1.6);
-border: 5px solid #5c8bf1;
+border: 5px solid var(--circleout);
 }
 }
 .coming {
