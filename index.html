@@ -2,75 +2,114 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Official Notice</title>
+    <title>Critical Alert</title>
     <style>
         body {
             margin: 0;
             padding: 0;
-            background: #0f172a;
-            color: #e2e8f0;
-            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            background: radial-gradient(circle at center, #1a0000, #000000);
+            color: #ff4d4d;
+            font-family: "Consolas", "Courier New", monospace;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
+            overflow: hidden;
         }
 
         .container {
             text-align: center;
-            padding: 40px 60px;
-            border: 1px solid #334155;
-            border-radius: 12px;
-            background: #020617;
-            box-shadow: 0 0 40px rgba(0,0,0,0.6);
+            padding: 50px 70px;
+            border: 2px solid #ff1a1a;
+            border-radius: 10px;
+            background: rgba(0, 0, 0, 0.85);
+            box-shadow: 0 0 30px #ff0000, 0 0 80px rgba(255, 0, 0, 0.4);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 20px #ff0000; }
+            50% { box-shadow: 0 0 60px #ff0000; }
+            100% { box-shadow: 0 0 20px #ff0000; }
         }
 
         .header {
-            font-size: 14px;
-            letter-spacing: 2px;
-            color: #94a3b8;
+            font-size: 13px;
+            letter-spacing: 3px;
+            color: #ff9999;
             margin-bottom: 20px;
         }
 
         .title {
-            font-size: 32px;
-            font-weight: 600;
+            font-size: 36px;
+            font-weight: bold;
             margin-bottom: 10px;
+            text-transform: uppercase;
         }
 
         .line {
-            width: 60px;
+            width: 80px;
             height: 2px;
-            background: #475569;
+            background: #ff1a1a;
             margin: 20px auto;
         }
 
         .message {
-            font-size: 28px;
+            font-size: 34px;
             font-weight: bold;
-            color: #f8fafc;
+            color: #ffffff;
+            text-shadow: 0 0 10px #ff0000, 0 0 25px #ff0000;
+            animation: flicker 1.5s infinite;
+        }
+
+        @keyframes flicker {
+            0% { opacity: 1; }
+            45% { opacity: 0.7; }
+            50% { opacity: 0.4; }
+            55% { opacity: 0.8; }
+            100% { opacity: 1; }
         }
 
         .footer {
             margin-top: 25px;
             font-size: 12px;
-            color: #64748b;
+            color: #b30000;
+        }
+
+        .warning {
+            position: absolute;
+            top: 20px;
+            width: 100%;
+            text-align: center;
+            font-size: 12px;
+            letter-spacing: 4px;
+            color: #ff1a1a;
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0%, 50%, 100% { opacity: 1; }
+            25%, 75% { opacity: 0; }
         }
     </style>
 </head>
 <body>
+
+    <div class="warning">⚠ SYSTEM ALERT ⚠</div>
+
     <div class="container">
-        <div class="header">SYSTEM AUTHORIZED DISPLAY</div>
-        <div class="title">Notice</div>
+        <div class="header">RESTRICTED INTERFACE</div>
+        <div class="title">CRITICAL WARNING</div>
         <div class="line"></div>
 
         <div class="message">
-            Gaani anna boli maga
+            GAANI ANNA BOLI MAGA
         </div>
 
         <div class="footer">
-            © Secure Display Interface
+            Unauthorized presence detected
         </div>
     </div>
+
 </body>
 </html>
