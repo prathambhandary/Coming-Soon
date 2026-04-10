@@ -2,167 +2,465 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Gaani Anna Critical Alert</title>
+  <title>In Loving Memory of Bhowmik</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { background: #000; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+    :root {
+      --black: #0a0a0a;
+      --dark: #111;
+      --gold: #c9a84c;
+      --gold-light: #e8c97a;
+      --cream: #f5efe0;
+      --gray: #888;
+    }
 
-    .alert-root {
+    body {
+      background: var(--black);
+      color: var(--cream);
+      font-family: 'IM Fell English', Georgia, serif;
       min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: #000;
-      position: relative;
+      overflow-x: hidden;
+      cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20'%3E%3Ctext y='16' font-size='16'%3E🕯️%3C/text%3E%3C/svg%3E") 10 10, auto;
+    }
+
+    /* Falling petals */
+    .petals-canvas {
+      position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden;
+    }
+    .petal {
+      position: absolute; top: -40px; font-size: 18px;
+      animation: fallDown linear infinite;
+      opacity: 0.5;
+    }
+    @keyframes fallDown {
+      0%   { transform: translateY(0) rotate(0deg) translateX(0); opacity: 0.5; }
+      50%  { transform: translateY(50vh) rotate(180deg) translateX(30px); }
+      100% { transform: translateY(110vh) rotate(360deg) translateX(-20px); opacity: 0; }
+    }
+
+    /* Header */
+    header {
+      position: relative; z-index: 2;
+      text-align: center;
+      padding: 60px 20px 30px;
+      border-bottom: 1px solid #333;
+    }
+
+    .black-ribbon {
+      position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+      width: 2px; height: 60px; background: #333;
+    }
+    .black-ribbon::before {
+      content: '';
+      position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+      width: 28px; height: 28px;
+      background: var(--black);
+      border: 1px solid #444;
+      border-radius: 50%;
+    }
+
+    .rip-eyebrow {
+      font-family: 'Playfair Display', serif;
+      font-size: 11px; letter-spacing: 8px;
+      color: var(--gold); text-transform: uppercase;
+      margin-bottom: 16px; opacity: 0.8;
+    }
+
+    .main-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(42px, 8vw, 80px);
+      font-weight: 700;
+      color: var(--cream);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .rip-label {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(18px, 4vw, 28px);
+      font-style: italic;
+      color: var(--gold);
+      letter-spacing: 3px;
+    }
+
+    .dates {
+      margin-top: 16px;
+      font-size: 14px; color: var(--gray); letter-spacing: 4px;
+    }
+
+    /* Portrait */
+    .portrait-section {
+      position: relative; z-index: 2;
+      display: flex; justify-content: center;
+      padding: 50px 20px;
+    }
+
+    .portrait-frame {
+      position: relative; width: 200px; height: 200px;
+    }
+
+    .portrait-frame::before, .portrait-frame::after {
+      content: '';
+      position: absolute; inset: -8px;
+      border: 1px solid var(--gold); opacity: 0.4;
+    }
+    .portrait-frame::after { inset: -16px; opacity: 0.2; }
+
+    .portrait-inner {
+      width: 200px; height: 200px;
+      border: 2px solid #333;
       overflow: hidden;
-      font-family: 'Share Tech Mono', 'Courier New', monospace;
+      display: flex; align-items: center; justify-content: center;
+      background: #1a1a1a;
+      font-size: 80px;
+      filter: grayscale(1) sepia(0.3);
     }
 
-    .scanlines {
-      position: absolute; inset: 0;
-      background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255,0,0,0.03) 2px, rgba(255,0,0,0.03) 4px);
-      pointer-events: none; z-index: 1;
+    .candles-row {
+      display: flex; justify-content: center; gap: 20px;
+      margin-top: 28px; font-size: 28px;
+    }
+    .candle { animation: candleFlicker 1.5s ease-in-out infinite; }
+    .candle:nth-child(2) { animation-delay: 0.3s; }
+    .candle:nth-child(3) { animation-delay: 0.6s; }
+    .candle:nth-child(4) { animation-delay: 0.9s; }
+    .candle:nth-child(5) { animation-delay: 1.2s; }
+    @keyframes candleFlicker {
+      0%,100%{ transform: scaleY(1) rotate(-1deg); }
+      33%    { transform: scaleY(0.95) rotate(1.5deg); }
+      66%    { transform: scaleY(1.03) rotate(-0.5deg); }
     }
 
-    .grid-bg {
-      position: absolute; inset: 0;
-      background-image:
-        linear-gradient(rgba(180,0,0,0.08) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(180,0,0,0.08) 1px, transparent 1px);
-      background-size: 40px 40px;
-      animation: gridShift 8s linear infinite;
+    /* Divider */
+    .ornament-divider {
+      display: flex; align-items: center; gap: 16px;
+      padding: 0 10%; margin: 10px 0;
     }
-    @keyframes gridShift { from { background-position: 0 0; } to { background-position: 0 40px; } }
+    .ornament-line { flex: 1; height: 1px; background: linear-gradient(to right, transparent, #444, transparent); }
+    .ornament-icon { color: var(--gold); font-size: 20px; opacity: 0.7; }
 
-    .corner { position: absolute; width: 28px; height: 28px; border-color: #ff2200; border-style: solid; }
-    .corner-tl { top: 16px; left: 16px; border-width: 2px 0 0 2px; }
-    .corner-tr { top: 16px; right: 16px; border-width: 2px 2px 0 0; }
-    .corner-bl { bottom: 16px; left: 16px; border-width: 0 0 2px 2px; }
-    .corner-br { bottom: 16px; right: 16px; border-width: 0 2px 2px 0; }
-
-    .ticker {
-      position: absolute; top: 0; left: 0; right: 0;
-      background: #ff1a00; color: #000; font-size: 11px; letter-spacing: 2px;
-      padding: 4px 0; text-align: center; font-weight: bold;
-      animation: tickerFlash 0.9s steps(1) infinite;
-      z-index: 10;
-    }
-    @keyframes tickerFlash { 0%,49% { background: #ff1a00; color:#000; } 50%,100% { background: #000; color:#ff1a00; border-bottom: 1px solid #ff1a00; } }
-
-    .box {
-      position: relative; z-index: 5;
-      border: 1px solid #ff2200;
-      padding: 40px 52px 36px;
-      max-width: 560px; width: 100%;
+    /* Eulogy section */
+    .eulogy {
+      position: relative; z-index: 2;
+      max-width: 680px; margin: 0 auto;
+      padding: 20px 32px 40px;
       text-align: center;
     }
 
-    .box::before, .box::after {
+    .eulogy-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px; font-style: italic;
+      color: var(--gold); margin-bottom: 24px; letter-spacing: 1px;
+    }
+
+    .eulogy p {
+      font-size: 17px; line-height: 1.9;
+      color: #ccc; margin-bottom: 16px;
+    }
+
+    .eulogy .highlight {
+      color: var(--cream); font-style: italic;
+    }
+
+    /* Tombstone */
+    .tombstone-section {
+      position: relative; z-index: 2;
+      display: flex; justify-content: center;
+      padding: 20px 20px 10px;
+    }
+
+    .tombstone {
+      width: 260px;
+      background: #1c1c1c;
+      border: 1px solid #333;
+      border-radius: 120px 120px 8px 8px;
+      padding: 40px 28px 32px;
+      text-align: center;
+      position: relative;
+    }
+    .tombstone::before {
+      content: '✝';
+      position: absolute; top: 18px; left: 50%; transform: translateX(-50%);
+      font-size: 22px; color: #444;
+    }
+    .tombstone-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 26px; color: var(--cream); margin: 10px 0 6px;
+    }
+    .tombstone-years {
+      font-size: 13px; color: var(--gray); letter-spacing: 3px; margin-bottom: 16px;
+    }
+    .tombstone-quote {
+      font-size: 13px; font-style: italic; color: #666; line-height: 1.6;
+      border-top: 1px solid #2a2a2a; padding-top: 14px;
+    }
+
+    /* Tribute cards */
+    .tributes {
+      position: relative; z-index: 2;
+      max-width: 740px; margin: 40px auto;
+      padding: 0 24px;
+    }
+
+    .tributes-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px; font-style: italic;
+      color: var(--gold); text-align: center; margin-bottom: 24px;
+    }
+
+    .tribute-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+    }
+
+    .tribute-card {
+      background: #161616; border: 1px solid #2a2a2a;
+      padding: 20px 18px; border-radius: 4px;
+    }
+    .tribute-name {
+      font-size: 12px; letter-spacing: 3px; color: var(--gold); margin-bottom: 10px; text-transform: uppercase;
+    }
+    .tribute-text {
+      font-size: 14px; font-style: italic; color: #aaa; line-height: 1.7;
+    }
+
+    /* The twist */
+    .twist-section {
+      position: relative; z-index: 2;
+      max-width: 680px; margin: 0 auto 20px;
+      padding: 0 24px;
+    }
+
+    .twist-box {
+      border: 1px solid #2a2a2a;
+      border-radius: 4px;
+      padding: 32px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .twist-box::before {
       content: '';
-      position: absolute; left: 0; right: 0; height: 1px; background: #ff2200;
-    }
-    .box::before { top: 8px; }
-    .box::after { bottom: 8px; }
-
-    .tag {
-      font-size: 10px; letter-spacing: 4px; color: #ff4400;
-      margin-bottom: 20px;
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at center, #1a1000 0%, transparent 70%);
     }
 
-    .id-line {
-      font-size: 10px; color: #660000; letter-spacing: 2px; margin-bottom: 14px;
-      animation: idFlicker 3s steps(1) infinite;
-    }
-    @keyframes idFlicker {
-      0%,94%,96%,100% { opacity: 1; }
-      95% { opacity: 0.1; }
+    .twist-reveal {
+      position: relative; z-index: 1;
     }
 
-    .divider {
-      display: flex; align-items: center; gap: 10px; margin: 12px 0;
-    }
-    .divider-line { flex: 1; height: 1px; background: #550000; }
-    .divider-diamond {
-      width: 6px; height: 6px;
-      background: #ff2200;
-      transform: rotate(45deg);
-      animation: diamondPulse 1.2s ease-in-out infinite;
-    }
-    @keyframes diamondPulse { 0%,100%{opacity:1;transform:rotate(45deg) scale(1)} 50%{opacity:0.3;transform:rotate(45deg) scale(0.5)} }
-
-    .main-text {
-      font-size: 30px; font-weight: bold; color: #fff;
-      letter-spacing: 3px; line-height: 1.35;
-      animation: mainGlitch 4s steps(1) infinite;
-    }
-    @keyframes mainGlitch {
-      0%,92%,94%,100% { text-shadow: 0 0 12px #ff2200; clip-path: none; transform: none; }
-      93% { text-shadow: -2px 0 #00ffff, 2px 0 #ff00ff; transform: skewX(-3deg); }
+    .twist-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 13px; letter-spacing: 5px; text-transform: uppercase;
+      color: var(--gray); margin-bottom: 20px;
     }
 
-    .sub-text {
-      font-size: 11px; color: #882200; letter-spacing: 3px; margin-top: 18px;
-      text-transform: uppercase;
+    .twist-message {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(22px, 5vw, 36px);
+      color: var(--gold-light);
+      line-height: 1.4;
+      margin-bottom: 14px;
     }
 
-    .status-row {
-      display: flex; justify-content: center; gap: 24px; margin-top: 22px;
+    .twist-sub {
+      font-size: 14px; color: #666; font-style: italic; line-height: 1.8;
     }
-    .status-dot {
-      display: flex; align-items: center; gap: 6px;
-      font-size: 10px; color: #882200; letter-spacing: 1px;
-    }
-    .dot {
-      width: 7px; height: 7px; border-radius: 50%; background: #ff2200;
-      animation: dotBlink 1.1s ease-in-out infinite;
-    }
-    .status-dot:nth-child(2) .dot { animation-delay: 0.4s; }
-    .status-dot:nth-child(3) .dot { animation-delay: 0.8s; }
-    @keyframes dotBlink { 0%,100%{opacity:1} 50%{opacity:0.1} }
 
-    .progress-bar {
-      margin-top: 24px; height: 2px; background: #1a0000; overflow: hidden;
+    .twist-emoji {
+      font-size: 40px; margin-bottom: 16px; display: block;
+      animation: shakeHead 2s ease-in-out infinite;
     }
-    .progress-fill {
-      height: 100%; width: 0; background: #ff2200;
-      animation: progressLoop 3s linear infinite;
+    @keyframes shakeHead {
+      0%,100%{ transform: rotate(0deg); }
+      20%{ transform: rotate(-8deg); }
+      40%{ transform: rotate(8deg); }
+      60%{ transform: rotate(-6deg); }
+      80%{ transform: rotate(6deg); }
     }
-    @keyframes progressLoop { 0%{width:0} 100%{width:100%} }
 
-    .footer-text {
-      position: absolute; bottom: 22px; left: 0; right: 0;
-      text-align: center; font-size: 9px; color: #440000; letter-spacing: 3px; z-index: 5;
+    /* Share */
+    .share-section {
+      position: relative; z-index: 2;
+      text-align: center; padding: 20px 20px 60px;
+    }
+
+    .share-btn {
+      display: inline-block;
+      border: 1px solid var(--gold); color: var(--gold);
+      font-family: 'Playfair Display', serif;
+      font-style: italic; font-size: 15px;
+      padding: 12px 32px; background: transparent;
+      cursor: pointer; letter-spacing: 1px;
+      transition: all 0.3s;
+      text-decoration: none;
+    }
+    .share-btn:hover { background: var(--gold); color: var(--black); }
+
+    .footer-epitaph {
+      font-size: 11px; color: #333; letter-spacing: 3px;
+      text-transform: uppercase; margin-top: 40px;
+      padding-bottom: 30px;
+      text-align: center;
     }
   </style>
 </head>
 <body>
-  <div class="alert-root">
-    <div class="grid-bg"></div>
-    <div class="scanlines"></div>
-    <div class="ticker">⚠ CRITICAL SYSTEM BREACH DETECTED ⚠ IMMEDIATE ACTION REQUIRED ⚠ CRITICAL SYSTEM BREACH DETECTED ⚠</div>
-    <div class="corner corner-tl"></div>
-    <div class="corner corner-tr"></div>
-    <div class="corner corner-bl"></div>
-    <div class="corner corner-br"></div>
 
-    <div class="box">
-      <div class="tag">[ RESTRICTED INTERFACE — LEVEL 5 CLEARANCE ]</div>
-      <div class="id-line">ALERT_ID: 7F3A-0011 &nbsp;|&nbsp; ORIGIN: UNKNOWN &nbsp;|&nbsp; TIMESTAMP: --:--:--</div>
-      <div class="divider"><div class="divider-line"></div><div class="divider-diamond"></div><div class="divider-line"></div></div>
-      <div class="main-text">GAANI ANNA<br>BOLI MAGA</div>
-      <div class="divider" style="margin-top:18px"><div class="divider-line"></div><div class="divider-diamond"></div><div class="divider-line"></div></div>
-      <div class="sub-text">Unauthorized presence confirmed. Containment initiated.</div>
-      <div class="status-row">
-        <div class="status-dot"><div class="dot"></div>THREAT ACTIVE</div>
-        <div class="status-dot"><div class="dot"></div>TRACKING</div>
-        <div class="status-dot"><div class="dot"></div>ALERT LIVE</div>
-      </div>
-      <div class="progress-bar"><div class="progress-fill"></div></div>
+  <!-- Falling petals -->
+  <div class="petals-canvas" id="petals"></div>
+
+  <!-- Header -->
+  <header>
+    <div class="black-ribbon"></div>
+    <div class="rip-eyebrow">In Loving Memory</div>
+    <h1 class="main-title">Bhowmik</h1>
+    <div class="rip-label">Rest In Peace</div>
+    <div class="dates">??? — Very Recently</div>
+  </header>
+
+  <!-- Candles -->
+  <div style="text-align:center;padding:30px 0 0;position:relative;z-index:2;">
+    <div class="candles-row">
+      <span class="candle">🕯️</span>
+      <span class="candle">🕯️</span>
+      <span class="candle">🕯️</span>
+      <span class="candle">🕯️</span>
+      <span class="candle">🕯️</span>
     </div>
-
-    <div class="footer-text">SYS_MONITOR v4.1 &nbsp;//&nbsp; SIGNAL STRENGTH: MAX &nbsp;//&nbsp; DO NOT TERMINATE</div>
   </div>
+
+  <!-- Portrait -->
+  <div class="portrait-section">
+    <div>
+      <div class="portrait-frame">
+        <div class="portrait-inner">🪦</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Ornament -->
+  <div class="ornament-divider">
+    <div class="ornament-line"></div>
+    <div class="ornament-icon">✦</div>
+    <div class="ornament-line"></div>
+  </div>
+
+  <!-- Eulogy -->
+  <div class="eulogy">
+    <div class="eulogy-title">A Life Remembered</div>
+    <p>
+      We gather here today in solemn remembrance of our dear <span class="highlight">Bhowmik</span>,
+      who departed this mortal realm shockingly, suddenly, and without any warning whatsoever.
+    </p>
+    <p>
+      Those who knew him remember his <span class="highlight">unique laugh</span>, his <span class="highlight">questionable fashion choices</span>,
+      and his remarkable ability to <span class="highlight">eat an ungodly amount of food</span> and still claim to be hungry.
+    </p>
+    <p>
+      He is survived by his phone (which probably has 3% battery right now),
+      his overdue assignments, and a half-eaten packet of chips that no one has the heart to throw away.
+    </p>
+    <p>
+      The world is a darker, quieter place without his unsolicited opinions.
+    </p>
+  </div>
+
+  <!-- Tombstone -->
+  <div class="tombstone-section">
+    <div class="tombstone">
+      <div class="tombstone-name">Bhowmik</div>
+      <div class="tombstone-years">Born: Some Year · Gone: Too Soon (allegedly)</div>
+      <div class="tombstone-quote">
+        "He was here.<br>He was loud about it.<br>He is missed."
+      </div>
+    </div>
+  </div>
+
+  <!-- Tributes -->
+  <div class="tributes">
+    <div class="tributes-title">Messages from Those Who Mourn</div>
+    <div class="tribute-grid">
+      <div class="tribute-card">
+        <div class="tribute-name">A Concerned Friend</div>
+        <div class="tribute-text">"He still owes me money. I will collect it in the afterlife. Rest knowing that."</div>
+      </div>
+      <div class="tribute-card">
+        <div class="tribute-name">His Mother</div>
+        <div class="tribute-text">"He never called. Even in life he never called. Nothing has changed."</div>
+      </div>
+      <div class="tribute-card">
+        <div class="tribute-name">His Wi-Fi Router</div>
+        <div class="tribute-text">"Finally. Some peace and quiet. Some bandwidth for the rest of the devices."</div>
+      </div>
+      <div class="tribute-card">
+        <div class="tribute-name">His Pillow</div>
+        <div class="tribute-text">"He loved me. He loved me more than most humans. I will carry that forever."</div>
+      </div>
+      <div class="tribute-card">
+        <div class="tribute-name">His Group Chat</div>
+        <div class="tribute-text">"Notification count: 847 unread. He died as he lived — ignoring us all."</div>
+      </div>
+      <div class="tribute-card">
+        <div class="tribute-name">The Snooze Button</div>
+        <div class="tribute-text">"We had something special. A bond forged at 6am every single morning. I miss him."</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Ornament -->
+  <div class="ornament-divider">
+    <div class="ornament-line"></div>
+    <div class="ornament-icon">✦</div>
+    <div class="ornament-line"></div>
+  </div>
+
+  <!-- The Twist -->
+  <div class="twist-section">
+    <div class="twist-box">
+      <div class="twist-reveal">
+        <div class="twist-title">Final Confession</div>
+        <span class="twist-emoji">😂</span>
+        <div class="twist-message">Surprise, Bhowmik.<br>You're not actually dead.</div>
+        <div class="twist-sub">
+          This page was lovingly crafted by someone who clearly has too much time on their hands
+          and considers this an acceptable use of it.<br><br>
+          You are alive. You are well. You are simply being trolled.<br><br>
+          <strong style="color:var(--gold-light);">Happy Trolling, Bhowmik. 🪦😂</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Share -->
+  <div class="share-section">
+    <p style="font-size:13px;color:#555;letter-spacing:2px;margin-bottom:20px;">SHARE THIS MEMORIAL</p>
+    <button class="share-btn" onclick="navigator.clipboard.writeText(window.location.href).then(()=>alert('Link copied! Send it to Bhowmik 🪦'))">
+      Copy Memorial Link
+    </button>
+  </div>
+
+  <div class="footer-epitaph">
+    RIP_BHOWMIK.HTML &nbsp;·&nbsp; A PRANK IN POOR TASTE &nbsp;·&nbsp; NO BHOWMIKS WERE HARMED
+  </div>
+
+  <script>
+    // Generate falling petals/flowers
+    const canvas = document.getElementById('petals');
+    const emojis = ['🌸','🥀','🌹','🌷','🍂','🌿'];
+    for (let i = 0; i < 18; i++) {
+      const p = document.createElement('div');
+      p.className = 'petal';
+      p.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+      p.style.left = Math.random() * 100 + 'vw';
+      p.style.animationDuration = (6 + Math.random() * 8) + 's';
+      p.style.animationDelay = (Math.random() * 10) + 's';
+      p.style.fontSize = (14 + Math.random() * 14) + 'px';
+      p.style.opacity = 0.3 + Math.random() * 0.4;
+      canvas.appendChild(p);
+    }
+  </script>
 </body>
 </html>
